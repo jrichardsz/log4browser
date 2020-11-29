@@ -24,25 +24,25 @@ var console = (function(oldCons) {
 window.console = console;
 
 function customLog(message) {
-  if (document.getElementById("logContainer") === null) {
+  if (document.getElementById("log4browserContainer") === null) {
     initializeLog();
   }
 
-  document.getElementById("logContainer").innerHTML += message + "\n";
+  document.getElementById("log4browserContainer").innerHTML += "- "+message + "\n";
 }
 
 function initializeLog() {
-  if (document.getElementById("logContainer") === null) {
+
+  if (document.getElementById("log4browserContainer") === null) {
     var elem = document.createElement('pre');
-    elem.setAttribute("id", "logContainer");
+    elem.setAttribute("id", "log4browserContainer");
     elem.style.cssText = `
 		position:absolute;
-		width:500px;
-		height:500px;
-		top:60px;
-		left:35px;
+		top:0px;
+		left:0px;
 		color:greenyellow;
 		padding: 5px;
+		white-space: pre-wrap;
 		`;
     document.body.appendChild(elem);
 
@@ -53,7 +53,3 @@ function initializeLog() {
     }
   }
 }
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  initializeLog();
-});
